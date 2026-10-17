@@ -64,6 +64,14 @@
   pointer-events: none;
 }
 .sidebar-bg { overflow: hidden; }
+// Fade the net toward the middle so it stays quiet behind the sidebar text.
+.sidebar-bg::after {
+  background: radial-gradient(ellipse 60% 55% at center,
+    rgba(30, 30, 30, .9) 0%,
+    rgba(30, 30, 30, .65) 40%,
+    rgba(30, 30, 30, .25) 70%,
+    rgba(30, 30, 30, 0) 100%);
+}
 
 // Seven social icons: narrow each slot a little so they stay on one row in the sidebar.
 #_sidebar .sidebar-social > ul > li > a { width: 2.5rem; }
