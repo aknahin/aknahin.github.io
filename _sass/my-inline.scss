@@ -81,8 +81,26 @@ body.light-mode { --pub-flyout-bg: #fff; --lightbox-bg: rgba(255, 255, 255, .96)
     rgba(30, 30, 30, 0) 100%);
 }
 
-// Seven social icons: narrow each slot a little so they stay on one row in the sidebar.
-#_sidebar .sidebar-social > ul > li > a { width: 2.5rem; }
+// Social icons always stay on one row. On the full-screen cover they keep the theme's size (3rem
+// slots, centered past the narrow column); in the narrow sidebar the 8 slots shrink to fit its
+// width. They scale between the two with the cover's slide, like the name (--cover-t).
+// The column is a shrink-to-fit flex item; give it the theme's full width, since the measured
+// rows below no longer stretch it.
+// The theme's `contain: content` also clips paint; keep layout containment but let the cover's
+// full-size icon row extend past the column.
+#_sidebar .sidebar-sticky { width: 21rem; max-width: 100%; contain: layout style; }
+#_sidebar .sidebar-social { container-type: inline-size; }
+#_sidebar .sidebar-social > ul {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+#_sidebar .sidebar-social > ul > li > a {
+  width: unquote("calc(min(3rem, 12.5cqi) + (3rem - min(3rem, 12.5cqi)) * var(--cover-t, 0))");
+  font-size: unquote("calc(min(1.4rem, 5.8cqi) + (1.4rem - min(1.4rem, 5.8cqi)) * var(--cover-t, 0))");
+}
 
 // Photography: tile mosaic. Every 9 photos fill exactly 5 rows of 4 square cells:
 // photos 1, 7 and 9 are large (2x2), 4 is tall (1x2), 6 is wide (2x1), the rest single cells.
@@ -166,4 +184,28 @@ body.light-mode { --pub-flyout-bg: #fff; --lightbox-bg: rgba(255, 255, 255, .96)
     stroke-width: 2;
     stroke-linecap: round;
   }
+}
+
+// Sidebar name: first name on one line, last name below. In the narrow sidebar the first line
+// shrinks to the column width so it never wraps; on the full-screen cover it is full heading size,
+// and it scales between the two with the cover's slide (--cover-t is set by my-body.html).
+.sidebar-about { container-type: inline-size; }
+.sidebar-about > a.sidebar-title > h2 {
+  .name-first, .name-last { display: block; }
+  .name-first {
+    width: max-content;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: unquote("calc(min(1em, 9.6cqi) + (1em - min(1em, 9.6cqi)) * var(--cover-t, 0))");
+  }
+}
+
+// Social icons: Google Scholar is an inline SVG sized to match the icon font.
+.icon-svg {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -.125em;
+  fill: currentColor;
 }

@@ -20,8 +20,14 @@ Good questions start great conversations.
 
 * [GitHub](https://github.com/aknahin)
 * [LinkedIn](https://www.linkedin.com/in/aknahin)
+* [Google Scholar](https://scholar.google.com/citations?hl=en&user=YHT-56QAAAAJ)
 * [ORCID](https://orcid.org/0000-0002-5442-033X)
 * [ResearchGate](https://www.researchgate.net/profile/Asrafuzzaman-Khan-Nahin)
+
+### Additional emails
+
+* **KFUPM:** [g202318990@kfupm.edu.sa](mailto:g202318990@kfupm.edu.sa)
+* **IUT:** [asrafuzzamankhannahin@iut-dhaka.edu](mailto:asrafuzzamankhannahin@iut-dhaka.edu)
 
 ## A note on my interests
 

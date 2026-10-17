@@ -199,3 +199,17 @@
     if (pushState) pushState.addEventListener('hy-push-state-after', mark);
   })();
 </script>
+<script>
+  /* Sidebar name: --cover-t follows the full-screen cover's open progress (1 open, 0 closed), every
+     frame of the slide, so the first line of the name grows and shrinks with it instead of jumping. */
+  (function () {
+    var drawer = document.getElementById('_drawer');
+    if (!drawer) return;
+    function set(t) {
+      drawer.style.setProperty('--cover-t', drawer.classList.contains('cover') ? t : 0);
+    }
+    set(drawer.hasAttribute('opened') ? 1 : 0);
+    drawer.addEventListener('hy-drawer-move', function (e) { set(e.detail.opacity); });
+    drawer.addEventListener('hy-drawer-transitioned', function (e) { set(e.detail ? 1 : 0); });
+  })();
+</script>
