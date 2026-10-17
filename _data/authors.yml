@@ -1,0 +1,22 @@
+# The primary author of this site.
+# Must be the same as `author` in `_config.yml`.
+nahin:
+  name:              Asrafuzzaman Khan Nahin
+  email:             asrafuzzamankhannahin@gmail.com
+
+  # Used at the bottom of each page and at the top of the `about` layout
+  about:             |
+    I'm an electrical engineer and researcher building algorithms for intelligent design automation,
+    from multilayer PCB routing to learning-guided decision making.
+    Based in Dhahran, Saudi Arabia, and open to PhD opportunities.
+
+  # No `picture` set, so the GitHub avatar is used.
+
+  # Social media icons in sidebar
+  social:
+    github:          aknahin
+    linkedin:        aknahin
+    orcid:           0000-0002-5442-033X
+    researchgate:    Asrafuzzaman-Khan-Nahin
+    email:           asrafuzzamankhannahin@gmail.com
+    cv:              /assets/Asrafuzzaman-Khan-Nahin-CV.pdf
