@@ -5,6 +5,7 @@ description: >
   Electrical engineer and researcher in intelligent design automation:
   multilayer PCB routing, path planning, and machine learning for engineering.
 hide_description: true
+cover: true
 ---
 
 <!--author-->
@@ -14,9 +15,33 @@ hide_description: true
 My MS research at King Fahd University of Petroleum and Minerals explored flow-field methods for PCB autorouting. I combine pathfinding, optimization, and machine learning to make routing more efficient, scalable, and adaptable.
 {:.lead}
 
-1. **Electronic design automation**
-2. **Path planning & optimization**
-3. **Machine learning for engineering**
+## Education
+
+### M.S. in Electrical Engineering (Electronics)
+King Fahd University of Petroleum and Minerals (KFUPM) · Jan 2024 – May 2026
+{:.faded}
+
+CGPA 3.625/4.00 · Supervisor: Dr. Jhonathan Prieto Rojas. Research on PCB autorouting, Electronic Design Automation (EDA), optimization algorithms, and machine-learning-assisted routing.
+
+### B.Sc. in Electrical and Electronic Engineering
+Islamic University of Technology (IUT) · Jan 2019 – May 2023
+{:.faded}
+
+CGPA 3.49/4.00 · Supervisor: Mr. Md. Omar Faruque. Specialized in photonics, electronics, and communication engineering.
+
+## Research interests
+
+* **Robotics path planning**: search, optimization, and learning-guided methods for finding efficient, collision-free paths.
+* **Electronic Design Automation (EDA)**: intelligent multilayer PCB routing and design-automation algorithms.
+* **Wearable electronics**: compact, body-worn electronic systems for sensing and interaction.
+
+## Skills
+
+* **Programming**: Python, C/C++, MATLAB, Verilog
+* **Machine learning**: PyTorch
+* **Design & simulation**: Cadence, KiCad, ANSYS Lumerical/HFSS, COMSOL Multiphysics, Simulink, PSpice
+* **Documentation & graphics**: LaTeX, Adobe Illustrator, MS Office
+* **Languages**: English, Bengali (native)
 
 ## Featured work
 
@@ -35,6 +60,7 @@ Simulation-led optimization of a gold bottom reflector design, increasing modele
 ## Selected publications
 
 * **2026** — [Simulation-Based Design and Optimization of a Plasmonic Metamaterial Absorber for Long-Wave Infrared Microbolometers](https://doi.org/10.1007/s13369-026-11485-7). *Arabian Journal for Science and Engineering.*
+* **2026** — Design optimization of wearable antennas using an adaptive network-based fuzzy inference system. *Scientific Reports.*
 * **2023** — [Numerical analysis of an asymmetric hexagonal plasmonic refractive index sensor](https://doi.org/10.1016/j.sbsr.2023.100563). *Sensing and Bio-Sensing Research.*
 
 [All publications](/publications/)

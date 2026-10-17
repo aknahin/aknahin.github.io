@@ -1,1 +1,82 @@
 <!-- Add HTML tags here to be included at the end of the body. -->
+<script>
+  // Page-to-page scrolling: keep scrolling past the bottom of a page to open the next sidebar
+  // menu page; keep scrolling up at the top to go back to the previous one (landing at its bottom).
+  (function () {
+    var PUSH = 260;      // how much extra scrolling past the edge triggers a page change
+    var COOLDOWN = 700;  // ms to ignore input after a page change
+    var pushState = document.getElementById('_pushState');
+    var accum = 0, resetTimer = null, busyUntil = 0, landAtBottom = false, touchY = null;
+
+    function pages() {
+      var list = ['/'];
+      document.querySelectorAll('#_sidebar .sidebar-nav-item[href]').forEach(function (a) {
+        var href = a.getAttribute('href');
+        if (href.indexOf('/assets/') !== 0 && list.indexOf(href) < 0) list.push(href);
+      });
+      return list;
+    }
+
+    function currentPath() {
+      var path = location.pathname.replace(/index\.html$/, '');
+      return path.endsWith('/') ? path : path.replace(/\.html$/, '') + '/';
+    }
+
+    function coverOpen() {
+      var drawer = document.getElementById('_drawer');
+      return drawer && drawer.classList.contains('cover') && drawer.opened;
+    }
+
+    function atBottom() {
+      return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    }
+
+    function go(step) {
+      var list = pages();
+      var target = list[list.indexOf(currentPath()) + step];
+      if (!target) return;
+      var link = document.querySelector('#_sidebar a[href="' + target + '"]');
+      if (!link) return;
+      busyUntil = Date.now() + COOLDOWN;
+      landAtBottom = step < 0;
+      link.click();
+    }
+
+    function push(delta) {
+      // A page change needs a fresh gesture: keep blocking while the same scroll continues.
+      if (Date.now() < busyUntil) { busyUntil = Math.max(busyUntil, Date.now() + 400); return; }
+      if (coverOpen()) return;
+      var edge = delta > 0 ? atBottom() : window.scrollY <= 0;
+      if (!edge || (accum && Math.sign(accum) !== Math.sign(delta))) accum = 0;
+      if (!edge) return;
+      accum += delta;
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(function () { accum = 0; }, 400);
+      if (Math.abs(accum) >= PUSH) {
+        var step = accum > 0 ? 1 : -1;
+        accum = 0;
+        go(step);
+      }
+    }
+
+    window.addEventListener('wheel', function (e) { push(e.deltaY); }, { passive: true });
+    window.addEventListener('touchstart', function (e) { touchY = e.touches[0].clientY; }, { passive: true });
+    window.addEventListener('touchend', function (e) {
+      if (touchY == null) return;
+      var dy = touchY - e.changedTouches[0].clientY;
+      touchY = null;
+      if (Math.abs(dy) > 120) push(dy > 0 ? PUSH : -PUSH);
+    }, { passive: true });
+
+    if (pushState) {
+      pushState.addEventListener('hy-push-state-after', function () {
+        busyUntil = Date.now() + COOLDOWN;
+        if (!landAtBottom) return;
+        landAtBottom = false;
+        setTimeout(function () {
+          window.scrollTo(0, document.documentElement.scrollHeight);
+        }, 50);
+      });
+    }
+  })();
+</script>

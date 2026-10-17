@@ -1,0 +1,63 @@
+# Peer-reviewed articles, newest first. Rendered by publications.md.
+# Citation counts are deliberately left out: they change over time.
+
+- title: Simulation-Based Design and Optimization of a Plasmonic Metamaterial Absorber for Long-Wave Infrared Microbolometers
+  authors: Asrafuzzaman Khan Nahin, A Abdur Rahman Akib, Rabiul Al Mahmud, Khurram Karim Qureshi
+  year: 2026
+  date: 12 July 2026
+  journal: Arabian Journal for Science and Engineering
+  pages: 1–12
+  publisher: Springer Berlin Heidelberg
+  rank: SJR Q1 · 0.545
+  url: https://doi.org/10.1007/s13369-026-11485-7
+  doi: 10.1007/s13369-026-11485-7
+  abstract: >-
+    This paper presents a novel metal–insulator-metal (MIM) microbolometer structure incorporating
+    plasmonic metamaterial absorbers to enhance long-wave infrared (LWIR) detection significantly.
+    Utilizing an innovative Al–LiNbO3–Au configuration, the proposed design strategically employs
+    aluminum for its superior absorbance and cost-effectiveness, coupled with a gold mirror to prevent
+    light penetration and ensure high reflectance. This structure aims to achieve high and selective
+    absorption in the midwave infrared (MWIR) and LWIR regions. By optimizing the geometry of the
+    absorber, specifically the lateral dimensions of the aluminum resonator within the array, our
+    results demonstrate high absorbance rates of up to 99.26% at 10.75 µm, a significant improvement
+    over the previous design. The integration of a VOx thermistor enhances temperature sensitivity,
+    making this microbolometer suitable for high …
+
+- title: Design optimization of wearable antennas using an adaptive network-based fuzzy inference system
+  authors: Asrafuzzaman Khan Nahin, Waleed M Hamanah, Alaa Hussein, Ali Ahmed Salem, Mohamed Ali Abido
+  year: 2026
+  date: 19 May 2026
+  journal: Scientific Reports
+  publisher: Nature Publishing Group UK
+  rank: SJR Q1 · 0.893
+  abstract: >-
+    This paper presents a data-driven optimization framework for wearable microstrip patch antennas
+    operating near the 2.4 GHz ISM band using an Adaptive Network-Based Fuzzy Inference System (ANFIS).
+    The proposed approach predicts key antenna geometry parameters—patch width, patch length, and feed
+    point coordinates—from target electromagnetic performance metrics, including resonant frequency,
+    reflection coefficient, bandwidth, and substrate thickness. A dataset of 500 samples was extracted
+    from parametric HFSS simulations, and the ANFIS model was trained using a 70/30 training-testing
+    split. Four membership function types “triangular, trapezoidal, Gaussian, and generalized bell” were
+    systematically evaluated to analyze their influence on prediction accuracy and convergence behavior.
+    Results demonstrate strong agreement between ANFIS predictions and HFSS simulations, with
+    sub-millimeter …
+
+- title: Numerical analysis of an asymmetric hexagonal plasmonic refractive index sensor model based on metal–insulator–metal and Si-insulator-Si waveguide
+  authors: Tanzim Afdol, Md Omar Faruque, Rabiul Al Mahmud, Rakibul Hasan Sagor, Asrafuzzaman Khan Nahin, Md Abu Abdullah Aumi, KM Sazid Hasan, Sadman Sazid, Najm Mogalli Nasser Nasser
+  year: 2023
+  date: 1 June 2023
+  journal: Sensing and Bio-Sensing Research
+  volume: 40
+  pages: "100563"
+  publisher: Elsevier
+  rank: SJR Q2 · 0.633
+  url: https://doi.org/10.1016/j.sbsr.2023.100563
+  doi: 10.1016/j.sbsr.2023.100563
+  abstract: >-
+    In this paper, a plasmonic refractive index sensor consisting of a Metal-Insulator-Metal (MIM)
+    waveguide is proposed introducing a hexagonal ring resonator coupled with two waveguides for the
+    sensing purpose of the refractive index with fabrication plan. The simulation results obtained from
+    the analysis, electromagnetic field and transmission spectra have been observed. We have demonstrated
+    the change in transmittance if specific physical parameters are changed in the design. By tuning the
+    device, the sensitivity of the structure can go up to 2950 nm/RIU and FoM up to 43.055. Furthermore,
+    the base material is changed to doped silicon to make the device CMOS-compatible.

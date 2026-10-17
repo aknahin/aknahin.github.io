@@ -1,1 +1,56 @@
 // You can add CSS rules here that will be inlined into each document.
+
+// Publications: hovering (or focusing) a title opens a details flyout.
+.pub {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.pub-title {
+  margin-bottom: .5rem;
+  cursor: help;
+}
+.pub-meta {
+  color: var(--gray);
+  font-size: .9em;
+  margin-top: 0;
+}
+.pub-flyout {
+  position: absolute;
+  z-index: 5;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: -.25rem;
+  padding: 1rem 1.25rem;
+  background: var(--body-bg);
+  color: var(--body-color);
+  border: 1px solid var(--border-color);
+  border-radius: .5rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .18);
+  font-size: .85em;
+  line-height: 1.5;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  // Hiding is delayed so the pointer can travel from the title down into the flyout.
+  transition: opacity .15s ease .3s, transform .15s ease .3s, visibility 0s linear .45s;
+
+  dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: .25rem 1rem;
+    margin: 0 0 .75rem;
+  }
+  dt { font-weight: 600; color: var(--gray); }
+  dd { margin: 0; }
+  .pub-abstract { margin: 0; }
+}
+.pub-title:hover + .pub-meta + .pub-flyout,
+.pub-title:focus-within + .pub-meta + .pub-flyout,
+.pub-title:focus + .pub-meta + .pub-flyout,
+.pub-flyout:hover {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}

@@ -1,1 +1,22 @@
 <!-- Add HTML tags here to be included in the head. -->
+{% if page.cover %}
+<script>
+  // Show the full-screen cover sidebar on every page load, not just the first one per tab:
+  // the theme skips it when history.state.closedOnce is set or the page loads scrolled down.
+  try {
+    if (history.state) {
+      var state = Object.assign({}, history.state);
+      delete state.closedOnce;
+      // Also drop the saved scroll position so the page under the cover starts at the top.
+      Object.keys(state).forEach(function (k) {
+        if (state[k] && typeof state[k] === 'object' && 'scrollTop' in state[k]) {
+          state[k] = Object.assign({}, state[k], { scrollTop: 0 });
+        }
+      });
+      history.replaceState(state, document.title);
+    }
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+  } catch (e) {}
+</script>
+{% endif %}

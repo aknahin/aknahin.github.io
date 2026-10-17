@@ -9,15 +9,27 @@ redirect_from:
 
 ## Peer-reviewed articles
 
-### Simulation-Based Design and Optimization of a Plasmonic Metamaterial Absorber for Long-Wave Infrared Microbolometers
-**A. K. Nahin**, A. A. R. Akib, R. Al Mahmud, and K. K. Qureshi  
-*Arabian Journal for Science and Engineering*, July 2026.  
-DOI: [10.1007/s13369-026-11485-7](https://doi.org/10.1007/s13369-026-11485-7)
-
-### Numerical analysis of an asymmetric hexagonal plasmonic refractive index sensor model based on metal–insulator–metal and Si-insulator-Si waveguide
-T. Afdol et al.  
-*Sensing and Bio-Sensing Research*, vol. 40, 100563, June 2023.  
-DOI: [10.1016/j.sbsr.2023.100563](https://doi.org/10.1016/j.sbsr.2023.100563)
+<div class="pubs">
+{% for pub in site.data.publications %}
+<article class="pub">
+  <h3 class="pub-title" tabindex="0">
+    {% if pub.url %}<a href="{{ pub.url }}" class="external">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}
+  </h3>
+  <p class="pub-meta">{{ pub.authors | replace: "Asrafuzzaman Khan Nahin", "<strong>Asrafuzzaman Khan Nahin</strong>" }}<br><em>{{ pub.journal }}</em>, {{ pub.year }}</p>
+  <div class="pub-flyout" role="tooltip">
+    <dl>
+      <dt>Authors</dt><dd>{{ pub.authors }}</dd>
+      <dt>Published</dt><dd>{{ pub.date }}</dd>
+      <dt>Journal</dt><dd>{{ pub.journal }}{% if pub.volume %}, vol. {{ pub.volume }}{% endif %}{% if pub.pages %}, {{ pub.pages }}{% endif %}</dd>
+      <dt>Publisher</dt><dd>{{ pub.publisher }}</dd>
+      {% if pub.rank %}<dt>Ranking</dt><dd>{{ pub.rank }}</dd>{% endif %}
+      {% if pub.doi %}<dt>DOI</dt><dd><a href="https://doi.org/{{ pub.doi }}" class="external">{{ pub.doi }}</a></dd>{% endif %}
+    </dl>
+    <p class="pub-abstract">{{ pub.abstract }}</p>
+  </div>
+</article>
+{% endfor %}
+</div>
 
 ## Manuscript under review
 
