@@ -54,3 +54,16 @@
   transform: none;
   transition-delay: 0s;
 }
+
+// nodes.js canvas sits inside the sidebar background layer, under the sidebar content.
+#sidebar-nodes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  pointer-events: none;
+}
+.sidebar-bg { overflow: hidden; }
+
+// Seven social icons: narrow each slot a little so they stay on one row in the sidebar.
+#_sidebar .sidebar-social > ul > li > a { width: 2.5rem; }

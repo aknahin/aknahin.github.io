@@ -1,4 +1,47 @@
 <!-- Add HTML tags here to be included at the end of the body. -->
+<script src="{{ '/assets/nodes.js-master/js/nodes.js' | relative_url }}"></script>
+<script>
+  // Animated nodes.js background behind the sidebar, replacing the background photo.
+  (function () {
+    var bg = document.querySelector('#_sidebar .sidebar-bg');
+    if (!bg || typeof NodesJs !== 'function') return;
+
+    var canvas = document.createElement('canvas');
+    canvas.id = 'sidebar-nodes';
+    bg.appendChild(canvas);
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var nodes = new NodesJs({
+      id: 'sidebar-nodes',
+      width: window.innerWidth,
+      height: window.innerHeight,
+      particleSize: 2,
+      lineSize: 1,
+      particleColor: [255, 255, 255, 0.3],
+      lineColor: [255, 255, 255],
+      backgroundFrom: [30, 30, 30],
+      backgroundTo: [37, 37, 38],
+      backgroundDuration: 4000,
+      nobg: false,
+      number: window.hasOwnProperty('orientation') ? 30 : 100,
+      speed: reduceMotion ? 0 : 20,
+      pointerCircleRadius: 150
+    });
+
+    window.addEventListener('resize', function () {
+      nodes.setWidth(window.innerWidth);
+      nodes.setHeight(window.innerHeight);
+    });
+
+    // nodes.js uses viewport mouse coordinates, so keep the canvas origin at the viewport's
+    // top-left whether the sidebar is the full-screen cover or the narrow strip.
+    (function align() {
+      var left = bg.getBoundingClientRect().left;
+      canvas.style.transform = 'translateX(' + (-left) + 'px)';
+      requestAnimationFrame(align);
+    })();
+  })();
+</script>
 <script>
   // Page-to-page scrolling: keep scrolling past the bottom of a page to open the next sidebar
   // menu page; keep scrolling up at the top to go back to the previous one (landing at its bottom).
@@ -31,7 +74,28 @@
       return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
     }
 
+    // On Home, scrolling up at the top brings the full-screen cover sidebar back.
+    function openCover() {
+      var drawer = document.getElementById('_drawer');
+      if (!drawer || drawer.opened) return;
+      busyUntil = Date.now() + COOLDOWN;
+      drawer.classList.add('cover');
+      // The theme removes its swipe-hint hand icon when the cover first closes; put it back.
+      var hint = document.getElementById('_hrefSwipeSVG');
+      var sidebar = document.getElementById('_sidebar');
+      if (hint && sidebar && !document.getElementById('_swipe')) {
+        var img = document.createElement('img');
+        img.id = '_swipe';
+        img.src = hint.href;
+        img.alt = 'Swipe image';
+        img.addEventListener('click', function () { drawer.close ? drawer.close() : (drawer.opened = false); });
+        sidebar.appendChild(img);
+      }
+      if (typeof drawer.open === 'function') drawer.open(); else drawer.opened = true;
+    }
+
     function go(step) {
+      if (step < 0 && currentPath() === '/') return openCover();
       var list = pages();
       var target = list[list.indexOf(currentPath()) + step];
       if (!target) return;

@@ -85,13 +85,17 @@ theme: jekyll-theme-hydejack
 # ----------------------------------------------------------------------------------------
  
 # Sidebar image and theme color of the site.
-accent_image:          /assets/img/sidebar-bg.jpg
+# The sidebar background is the animated nodes.js canvas (see _includes/my-body.html);
+# this solid color shows until it starts.
+accent_image:
+  background:          rgb(30,30,30)
+  overlay:             false
 accent_color:          rgb(79,177,186)
 
 # This is used for the `theme-color` meta tag,
 # which changes the background color of the browser UI in certain browsers.
 # Defaults to `accent_color`.
-theme_color:           rgb(25,55,71)
+theme_color:           rgb(30,30,30)
 
 # IMPORTANT:
 # As of Hydejack 9.2, Google Fonts are turned off by default due to a stronger focus on privacy.
@@ -307,6 +311,8 @@ exclude:
   - Gemfile.lock
   - README.md
   - functions
+  - assets/nodes.js-master/index.html
+  - assets/nodes.js-master/README.md
 include:
   - _routes.json
   - .well-known
