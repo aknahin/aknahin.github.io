@@ -151,7 +151,13 @@
     dialog.className = 'photo-lightbox';
     var img = document.createElement('img');
     img.alt = '';
+    var close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'photo-lightbox-close';
+    close.setAttribute('aria-label', 'Close');
+    close.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>';
     dialog.appendChild(img);
+    dialog.appendChild(close);
     document.body.appendChild(dialog);
     var links = [], index = 0;
 
@@ -174,5 +180,22 @@
       if (e.key === 'ArrowRight') show(index + 1);
       if (e.key === 'ArrowLeft') show(index - 1);
     });
+  })();
+</script>
+<script>
+  /* External links and PDFs (e.g. the CV) open in a new tab, on every page the theme loads. */
+  (function () {
+    function mark() {
+      document.querySelectorAll('a[href]').forEach(function (a) {
+        var external = /^https?:$/.test(a.protocol) && a.host !== location.host;
+        if (external || /\.pdf$/i.test(a.pathname)) {
+          a.target = '_blank';
+          a.rel = 'noopener';
+        }
+      });
+    }
+    mark();
+    var pushState = document.getElementById('_pushState');
+    if (pushState) pushState.addEventListener('hy-push-state-after', mark);
   })();
 </script>

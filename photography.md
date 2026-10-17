@@ -8,10 +8,10 @@ redirect_from:
 ---
 
 {% assign photos = site.static_files | where_exp: "f", "f.path contains '/assets/gallery/'" | sort: "path" %}
-<div class="photo-grid">
+<div class="photo-mosaic"><div class="photo-grid">
 {% for photo in photos %}
   <a href="{{ photo.path | relative_url }}" class="photo">
     <img src="{{ photo.path | relative_url }}" alt="Photograph {{ forloop.index }}" loading="lazy" decoding="async">
   </a>
 {% endfor %}
-</div>
+</div></div>
