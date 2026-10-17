@@ -65,7 +65,7 @@ menu:
 legal: []
 
 # This text will appear in a `<small>` tag in the footer of every page.
-copyright:             © 2026 Asrafuzzaman Khan Nahin
+copyright:             © YEAR Asrafuzzaman Khan Nahin   # YEAR becomes the current year
 
 # Format of the permalinks
 permalink:             /:categories/:year-:month-:day-:title/

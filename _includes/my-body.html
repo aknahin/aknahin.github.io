@@ -213,3 +213,16 @@
     drawer.addEventListener('hy-drawer-transitioned', function (e) { set(e.detail ? 1 : 0); });
   })();
 </script>
+
+<script>
+  /* Footer copyright shows the visitor's current year (the build year is the no-JS fallback). */
+  (function () {
+    function update() {
+      var year = String(new Date().getFullYear());
+      document.querySelectorAll('.copyright-year').forEach(function (el) { el.textContent = year; });
+    }
+    update();
+    var pushState = document.getElementById('_pushState');
+    if (pushState) pushState.addEventListener('hy-push-state-after', update);
+  })();
+</script>

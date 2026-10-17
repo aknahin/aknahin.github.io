@@ -209,3 +209,45 @@ body.light-mode { --pub-flyout-bg: #fff; --lightbox-bg: rgba(255, 255, 255, .96)
   vertical-align: -.125em;
   fill: currentColor;
 }
+
+// Hovering or focusing a social icon shows its platform name centered under the icon row.
+#_sidebar .sidebar-social > ul { position: relative; }
+#_sidebar .sidebar-social .social-name {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: .6rem;
+  font-size: .85rem;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, .75);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-3px);
+  transition: opacity .15s ease, transform .15s ease;
+}
+#_sidebar .sidebar-social a:hover .social-name,
+#_sidebar .sidebar-social a:focus-visible .social-name {
+  opacity: 1;
+  transform: none;
+}
+
+
+// Theme toggle: sun in light mode, moon in dark mode (OS preference or the toggle's class).
+#_dark-mode .theme-icon {
+  display: inline-block;
+  vertical-align: -.125em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#_dark-mode .theme-icon-moon { display: none; }
+@media screen and (prefers-color-scheme: dark) {
+  body:not(.light-mode) #_dark-mode .theme-icon-sun { display: none; }
+  body:not(.light-mode) #_dark-mode .theme-icon-moon { display: inline-block; }
+}
+body.dark-mode #_dark-mode .theme-icon-sun { display: none; }
+body.dark-mode #_dark-mode .theme-icon-moon { display: inline-block; }
