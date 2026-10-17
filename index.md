@@ -60,7 +60,7 @@ Simulation-led optimization of a gold bottom reflector design, increasing modele
 ## Selected publications
 
 * **2026** — [Simulation-Based Design and Optimization of a Plasmonic Metamaterial Absorber for Long-Wave Infrared Microbolometers](https://doi.org/10.1007/s13369-026-11485-7). *Arabian Journal for Science and Engineering.*
-* **2026** — Design optimization of wearable antennas using an adaptive network-based fuzzy inference system. *Scientific Reports.*
+* **2026** — [Design optimization of wearable antennas using an adaptive network-based fuzzy inference system](https://doi.org/10.1038/s41598-026-53397-4). *Scientific Reports.*
 * **2023** — [Numerical analysis of an asymmetric hexagonal plasmonic refractive index sensor](https://doi.org/10.1016/j.sbsr.2023.100563). *Sensing and Bio-Sensing Research.*
 
 [All publications](/publications/)
