@@ -144,3 +144,35 @@
     }
   })();
 </script>
+<script>
+  // Photography lightbox: click a grid photo to view it full size; arrows step, Esc or click closes.
+  (function () {
+    var dialog = document.createElement('dialog');
+    dialog.className = 'photo-lightbox';
+    var img = document.createElement('img');
+    img.alt = '';
+    dialog.appendChild(img);
+    document.body.appendChild(dialog);
+    var links = [], index = 0;
+
+    function show(i) {
+      index = (i + links.length) % links.length;
+      img.src = links[index].href;
+      img.alt = links[index].querySelector('img').alt;
+    }
+
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('.photo-grid .photo');
+      if (!link || typeof dialog.showModal !== 'function') return;
+      e.preventDefault();
+      links = Array.prototype.slice.call(document.querySelectorAll('.photo-grid .photo'));
+      show(links.indexOf(link));
+      dialog.showModal();
+    });
+    dialog.addEventListener('click', function () { dialog.close(); });
+    dialog.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') show(index + 1);
+      if (e.key === 'ArrowLeft') show(index - 1);
+    });
+  })();
+</script>
