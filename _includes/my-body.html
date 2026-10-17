@@ -124,13 +124,30 @@
     }
 
     window.addEventListener('wheel', function (e) { push(e.deltaY); }, { passive: true });
-    window.addEventListener('touchstart', function (e) { touchY = e.touches[0].clientY; }, { passive: true });
+    /* On touch screens a vertical swipe on the full-screen cover closes it, like the theme's
+       scroll-down close for mouse wheels; mostly horizontal swipes are left to the theme. */
+    function closeCover() {
+      var drawer = document.getElementById('_drawer');
+      busyUntil = Date.now() + COOLDOWN;
+      if (typeof drawer.close === 'function') drawer.close(); else drawer.opened = false;
+    }
+
+    var touchX = null;
+    window.addEventListener('touchstart', function (e) {
+      touchY = e.touches[0].clientY;
+      touchX = e.touches[0].clientX;
+    }, { passive: true, capture: true });
     window.addEventListener('touchend', function (e) {
       if (touchY == null) return;
       var dy = touchY - e.changedTouches[0].clientY;
-      touchY = null;
+      var dx = touchX - e.changedTouches[0].clientX;
+      touchY = touchX = null;
+      if (coverOpen()) {
+        if (Math.abs(dy) > 60 && Math.abs(dy) > Math.abs(dx)) closeCover();
+        return;
+      }
       if (Math.abs(dy) > 120) push(dy > 0 ? PUSH : -PUSH);
-    }, { passive: true });
+    }, { passive: true, capture: true });
 
     if (pushState) {
       pushState.addEventListener('hy-push-state-after', function () {
