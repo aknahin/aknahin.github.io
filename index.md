@@ -1,6 +1,7 @@
 ---
 layout: about
 title: Turning complex pathways into clear directions.
+tab_title: aknahin
 description: >
   Electrical engineer and researcher in intelligent design automation:
   multilayer PCB routing, path planning, and machine learning for engineering.

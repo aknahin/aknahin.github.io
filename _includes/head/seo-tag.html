@@ -1,0 +1,12 @@
+{% comment %}<!--
+Including `seo` in a partial prevents a parse error when `jekyll-seo-tag` is not included.
+A page's `tab_title` replaces only the browser-tab <title>; its `title` stays the on-page heading.
+-->{% endcomment %}
+{% capture seo_html %}{% seo %}{% endcapture %}
+{% if page.tab_title %}
+  {% assign seo_before = seo_html | split: "<title>" | first %}
+  {% assign seo_after = seo_html | split: "</title>" | last %}
+  {{ seo_before }}<title>{{ page.tab_title | escape }}</title>{{ seo_after }}
+{% else %}
+  {{ seo_html }}
+{% endif %}
