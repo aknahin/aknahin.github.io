@@ -63,6 +63,35 @@ body.light-mode { --pub-flyout-bg: #fff; --lightbox-bg: rgba(255, 255, 255, .96)
   transition-delay: 0s;
 }
 
+// Projects: same flyout, opened by the project title. It sits right under the title
+// (no `top`, so it keeps its in-flow position) and shows the README summary with demo GIFs.
+.proj { position: relative; }
+.proj-title { cursor: help; }
+.proj-flyout {
+  top: auto;
+  margin-top: -.5rem;
+  p { margin: 0 0 .75rem; }
+  .proj-gifs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 16rem));
+    justify-content: center;
+    gap: .75rem;
+    margin: 0 0 .5rem;
+  }
+  figure { margin: 0; }
+  img { display: block; width: 100%; height: auto; border-radius: .25rem; }
+  figcaption { margin-top: .25rem; color: var(--gray); font-size: .9em; text-align: center; }
+  .proj-legend { margin: 0; color: var(--gray); font-size: .9em; }
+}
+.proj-title:hover + .proj-flyout,
+.proj-title:focus-within + .proj-flyout,
+.proj-title:focus + .proj-flyout {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
 // nodes.js canvas sits inside the sidebar background layer, under the sidebar content.
 #sidebar-nodes {
   position: absolute;
