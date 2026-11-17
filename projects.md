@@ -35,31 +35,26 @@ Exploring uneven grating geometry to couple more light into an integrated photon
 <div class="pub-flyout proj-flyout" role="tooltip">
   <dl>
     <dt>Type</dt><dd>Personal project</dd>
-    <dt>Tools</dt><dd>Verilog, Icarus Verilog, GTKWave, Python</dd>
+    <dt>Tools</dt><dd>Verilog, Xilinx ISE, Icarus Verilog, Python, Webots</dd>
     <dt>Board</dt><dd>Digilent Nexys 3 (Spartan-6 XC6SLX16)</dd>
     <dt>Code</dt><dd><a href="https://github.com/aknahin/fpga-dynamic-robot-path-planner" class="external">aknahin/fpga-dynamic-robot-path-planner</a></dd>
+    <dt>Demo</dt><dd><a href="https://youtu.be/R98e_o1Yoh4" class="external">YouTube</a></dd>
   </dl>
-  <p>A robot starts at cell 0 of an 8×8 grid and must reach cell 63. A BFS engine in Verilog finds the shortest route using up, down, left, and right moves, and the robot follows it one cell at a time. When an obstacle lands on the part of the route it has not walked yet, the robot stops and the FPGA replans from where it stands. The board streams the robot position, obstacle map, and route over USB-UART to a Python viewer.</p>
-  <p>A randomized testbench drops walls while the robot moves, about half of them on its route, and walks one block back and forth along row 4. Every route is checked against an independent shortest-path calculation.</p>
-  <div class="proj-gifs">
-    <figure>
-      <img src="/assets/projects/fpga-path-planner-seed36.gif" width="352" height="366" loading="lazy" alt="Robot run with seed 36: the robot replans around new walls on an 8 by 8 grid">
-      <figcaption>Seed 36: 20 steps, 6 replans</figcaption>
-    </figure>
-    <figure>
-      <img src="/assets/projects/fpga-path-planner-seed46-hard.gif" width="352" height="366" loading="lazy" alt="Robot run with seed 46 and more walls: the robot replans and waits for a moving block">
-      <figcaption>Seed 46, more walls: 21 steps, 11 replans</figcaption>
-    </figure>
-  </div>
-  <p class="proj-legend">Red: robot · Green: route · Purple: blocked route · Grey: wall · Orange: moving block · Yellow: goal · Teal: visited · Blue: cells BFS explored</p>
+  <p>A Nexys 3 FPGA does all the thinking for a robot simulated in Webots. The robot starts at a random spot in a maze-like warehouse and must reach the delivery zone. It is only told where the shelving racks are. It finds boxes and moving carts itself from four small depth cameras, and the FPGA decides which obstacles are moving. Every 32 ms frame the FPGA rebuilds a cost field and a flow field and sends back the wheel speeds over Ethernet. The Mac only passes bytes and runs the simulator.</p>
+  <p>The design fits in 30% of the chip at 100 MHz and matches a Python reference model bit for bit on every frame. On the real board it needs at most 0.37 ms of compute per frame, and the robot reached the goal in all 60 random warehouses. An earlier version used BFS on an 8×8 grid and replanned when an obstacle blocked the route.</p>
+  <figure>
+    <img src="/assets/projects/hw_side_by_side.gif" width="994" height="320" loading="lazy" alt="One warehouse run with the real Nexys 3 in the loop: the FPGA's flow field and obstacle map on the left, the robot's camera view on the right">
+    <figcaption>Seed 3, real board in the loop, 3× speed. Left: what the FPGA believed. Right: the robot's view.</figcaption>
+  </figure>
+  <p class="proj-legend">Arrows: flow field · Orange: cells the FPGA thinks are blocked · Red: real carts</p>
 </div>
 
-Personal project · 2026 · Verilog, Icarus Verilog, Nexys 3
+Personal project · 2026 · Verilog, Nexys 3, Webots
 {:.faded}
 
-Designed an 8×8 BFS path planner that updates a robot's route when an obstacle changes. Verified obstacle avoidance and replanning with a Verilog testbench and waveform simulation. Code on [GitHub](https://github.com/aknahin/fpga-dynamic-robot-path-planner).
+Built a flow-field planner in Verilog that drives a simulated warehouse robot from a real FPGA. It finds moving obstacles from depth cameras and replans every 32 ms. Code on [GitHub](https://github.com/aknahin/fpga-dynamic-robot-path-planner).
 
-*FPGA · Path planning · Verilog · Icarus Verilog · Nexys 3*
+*FPGA · Path planning · Flow field · Verilog · Nexys 3 · Webots*
 
 </div>
 

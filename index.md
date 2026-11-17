@@ -32,7 +32,7 @@ CGPA 3.49/4.00 · Supervisor: Mr. Md. Omar Faruque. Specialized in photonics, el
 
 ## Research interests
 
-* **Robotics path planning**: search, optimization, and learning-guided methods for finding efficient, collision-free paths.
+* **[Robotics path planning](https://github.com/aknahin/fpga-dynamic-robot-path-planner)**: search, optimization, and learning-guided methods for finding efficient, collision-free paths.
 * **Electronic Design Automation (EDA)**: intelligent multilayer PCB routing and design-automation algorithms.
 * **Wearable electronics**: compact, body-worn electronic systems for sensing and interaction.
 
